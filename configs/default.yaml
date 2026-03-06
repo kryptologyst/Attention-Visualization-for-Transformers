@@ -1,0 +1,45 @@
+# Default configuration for attention visualization
+model:
+  name: "bert-base-uncased"
+  device: "auto"  # auto, cuda, mps, cpu
+  seed: 42
+
+visualization:
+  figsize: [12, 10]
+  cmap: "viridis"
+  dpi: 300
+  save_format: "png"
+
+attention:
+  max_length: 512
+  discard_ratio: 0.9
+  threshold: 0.1
+
+evaluation:
+  stability_method: "kendall_tau"  # kendall_tau, spearman, iou
+  faithfulness_tests: ["deletion", "insertion", "sufficiency"]
+  interpretability_metrics: ["entropy", "sparsity", "symmetry", "concentration"]
+
+demo:
+  default_text: "The quick brown fox jumps over the lazy dog"
+  available_models:
+    - "bert-base-uncased"
+    - "bert-large-uncased"
+    - "distilbert-base-uncased"
+    - "roberta-base"
+  visualization_methods:
+    - "Heatmap"
+    - "Flow"
+    - "Rollout"
+    - "Head Importance"
+    - "Layer Similarity"
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+paths:
+  data_dir: "data"
+  assets_dir: "assets"
+  configs_dir: "configs"
+  logs_dir: "logs"
